@@ -1,0 +1,34 @@
+Server:
+  RunMode: debug
+  HttpPort: 8000
+  ReadTimeout: 60
+  WriteTimeout: 60
+Database:
+  DBType: mysql
+  Username: root  # 填写你的数据库账号
+  Password: ljl123456  # 填写你的数据库密码
+  Host: 127.0.0.1:3306
+  DBName: dt_service
+  TablePrefix: dt_
+  Charset: utf8
+  ParseTime: True
+  MaxIdleConns: 10
+  MaxOpenConns: 30
+App:
+  DefaultPageSize: 10
+  MaxPageSize: 100
+  LogSavePath: storage/logs
+  LogFileExt: .log
+  CaptchaType: 'math' # math:算数题 string:随机字符串 chinese:随机中文 digit:随机数字 audio:音频
+  StaticDir: 'static'
+  FileDir: 'static/files/'
+Jwt:
+  JwtSecret: '1234567890'
+  Expires: 86400
+  Issuer: 'dt'
+  jwt_blacklist_grace_period:
+Redis:
+  Host: 127.0.0.1
+  Port: 6379
+  DB: 0
+  Password:
