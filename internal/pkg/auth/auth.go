@@ -2,7 +2,7 @@ package auth
 
 import (
 	"context"
-	"github.com/DATOULIN/dtservice/internal/dtservice/helper"
+	"github.com/DATOULIN/dtservice/internal/pkg/helper"
 	"github.com/DATOULIN/dtservice/pkg/token"
 	"github.com/DATOULIN/dtservice/pkg/util"
 	"github.com/dgrijalva/jwt-go"

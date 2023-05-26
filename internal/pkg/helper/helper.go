@@ -1,8 +1,8 @@
 package helper
 
 import (
-	"github.com/DATOULIN/dtservice/internal/pkg/setting"
 	"github.com/DATOULIN/dtservice/pkg/db"
+	"github.com/DATOULIN/dtservice/pkg/vp"
 	"github.com/jinzhu/gorm"
 	"github.com/redis/go-redis/v9"
 	"log"
@@ -21,7 +21,12 @@ var (
 
 // SetupSetting 初始化配置
 func SetupSetting() {
-	newSetting, err := setting.NewSetting()
+	opt := vp.Options{
+		ConfigName: "dtservice",
+		ConfigPath: "configs/",
+		ConfigType: "yaml",
+	}
+	newSetting, err := vp.NewViper(&opt)
 	err = newSetting.ReadSection("Server", &ServerSettings)
 	err = newSetting.ReadSection("Database", &DatabaseSettings)
 	err = newSetting.ReadSection("App", &AppSettings)

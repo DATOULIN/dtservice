@@ -1,9 +1,10 @@
 package dtservice
 
 import (
-	"github.com/DATOULIN/dtservice/internal/dtservice/helper"
 	"github.com/DATOULIN/dtservice/internal/dtservice/router"
+	"github.com/DATOULIN/dtservice/internal/pkg/helper"
 	"github.com/gin-gonic/gin"
+	"log"
 	"net/http"
 )
 
@@ -24,6 +25,7 @@ func NewDtServiceCommand() {
 	}
 	err := s.ListenAndServe()
 	if err != nil {
+		log.Fatalf("init err:%v", err)
 		return
 	}
 }

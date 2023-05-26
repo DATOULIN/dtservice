@@ -1,8 +1,8 @@
 package app
 
 import (
-	"github.com/DATOULIN/dtservice/internal/dtservice/helper"
 	"github.com/DATOULIN/dtservice/internal/pkg/convert"
+	"github.com/DATOULIN/dtservice/internal/pkg/helper"
 	"github.com/gin-gonic/gin"
 )
 
