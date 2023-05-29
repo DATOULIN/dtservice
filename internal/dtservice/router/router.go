@@ -11,13 +11,8 @@ func NewRouter() *gin.Engine {
 	r.Use(gin.Logger())
 	r.Use(gin.Recovery())
 	r.Use(middleware.Translations())
-	userR := r.Group("/api/v1/")
-	userRAuth := r.Group("/api/v1/")
-	userRAuth.Use(middleware.JwtAuth())
 
-	user := v1.NewUser()
-
-	userR.POST("/register", user.Register)
+	v1.InitUserRouter(r)
 
 	return r
 }

@@ -2,25 +2,25 @@ package dtservice
 
 import (
 	"github.com/DATOULIN/dtservice/internal/dtservice/router"
-	"github.com/DATOULIN/dtservice/internal/pkg/helper"
+	"github.com/DATOULIN/dtservice/internal/pkg/setting"
 	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
 )
 
 func NewDtServiceCommand() {
-	helper.SetupSetting()
-	helper.SetupDBEngine()
-	helper.SetUpRedis()
+	setting.SetupSetting()
+	setting.SetupDBEngine()
+	setting.SetUpRedis()
 
 	// 设置 Gin 模式
-	gin.SetMode(helper.ServerSettings.RunMode)
+	gin.SetMode(setting.ServerSettings.RunMode)
 	newRouter := router.NewRouter()
 	s := http.Server{
-		Addr:           ":" + helper.ServerSettings.HttpPort,
+		Addr:           ":" + setting.ServerSettings.HttpPort,
 		Handler:        newRouter,
-		ReadTimeout:    helper.ServerSettings.ReadTimeout,
-		WriteTimeout:   helper.ServerSettings.WriteTimeout,
+		ReadTimeout:    setting.ServerSettings.ReadTimeout,
+		WriteTimeout:   setting.ServerSettings.WriteTimeout,
 		MaxHeaderBytes: 1 << 20,
 	}
 	err := s.ListenAndServe()

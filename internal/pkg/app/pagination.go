@@ -2,7 +2,7 @@ package app
 
 import (
 	"github.com/DATOULIN/dtservice/internal/pkg/convert"
-	"github.com/DATOULIN/dtservice/internal/pkg/helper"
+	"github.com/DATOULIN/dtservice/internal/pkg/setting"
 	"github.com/gin-gonic/gin"
 )
 
@@ -17,10 +17,10 @@ func GetPage(c *gin.Context) int {
 func GetPageSize(c *gin.Context) int {
 	pageSize := convert.StrTo(c.Query("page_size")).MustInt()
 	if pageSize <= 0 {
-		return helper.AppSettings.DefaultPageSize
+		return setting.AppSettings.DefaultPageSize
 	}
-	if pageSize > helper.AppSettings.MaxPageSize {
-		return helper.AppSettings.MaxPageSize
+	if pageSize > setting.AppSettings.MaxPageSize {
+		return setting.AppSettings.MaxPageSize
 	}
 	return pageSize
 }

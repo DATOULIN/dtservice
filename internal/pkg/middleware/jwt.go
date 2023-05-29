@@ -18,7 +18,7 @@ func JwtAuth() gin.HandlerFunc {
 			ctx.Abort()
 			return
 		}
-		clams, err := auth.ParseToken(tokenStr)
+		clams, _, err := auth.ParseToken(tokenStr)
 		// 判断token是否加入黑名单（注销的时候会把当前的token加入黑名单）
 		if err != nil || auth.IsInBlacklist(tokenStr) {
 			response.ToErrorResponse(errno.UnauthorizedTokenTimeout)

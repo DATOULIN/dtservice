@@ -1,4 +1,4 @@
-package helper
+package setting
 
 import (
 	"github.com/DATOULIN/dtservice/pkg/db"
