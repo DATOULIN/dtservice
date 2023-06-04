@@ -12,6 +12,7 @@ func NewDtServiceCommand() {
 	setting.SetupSetting()
 	setting.SetupDBEngine()
 	setting.SetUpRedis()
+	setting.SetupUUID()
 
 	// 设置 Gin 模式
 	gin.SetMode(setting.ServerSettings.RunMode)

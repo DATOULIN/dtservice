@@ -1,22 +1,13 @@
 package model
 
-type ID struct {
-	ID uint32 `gorm:"primary_key" json:"id"`
-}
-
-type CreatedOn struct {
-	CreatedOn uint32 `json:"created_on"`
-}
-
-type ModifiedOn struct {
-	ModifiedOn uint32 `json:"modified_on"`
-}
-
 type Model struct {
-	ID
+	ID         uint32 `gorm:"primary_key" json:"id"`
 	CreatedBy  string `json:"created_by"`
 	ModifiedBy string `json:"modified_by"`
-	CreatedOn
-	ModifiedOn
-	DeletedOn uint32 `json:"deleted_on"`
+	DeletedBy  string `json:"deleted_by"`
+	CreatedOn  uint32 `json:"created_on"`
+	ModifiedOn uint32 `json:"modified_on"`
+	DeletedOn  uint32 `json:"deleted_on"`
+	IsDel      uint8  `json:"is_del"`
+	State      uint8  `json:"state"` // 状态
 }

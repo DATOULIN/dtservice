@@ -15,4 +15,5 @@ var (
 	ErrorOldPasswordFail   = NewError(2001012, "原密码错误")
 	ErrorOldNowPswFail     = NewError(2001013, "新密码不能与原密码一致")
 	ErrorUserBanFail       = NewError(2001014, "该用户已被禁用")
+	ErrorDeleteUserFail    = NewError(2001015, "删除失败")
 )

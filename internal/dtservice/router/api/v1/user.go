@@ -13,5 +13,13 @@ func InitUserRouter(r *gin.Engine) {
 	user := controller.NewUser()
 	{
 		userR.POST("/register", user.Register)
+		userR.POST("/login", user.Login)
+
+		userAuth.POST("/logout", user.Logout)
+		userAuth.GET("/list", user.GetUserList)
+		userAuth.PUT("/update/:user_id", user.UpdateUser)
+		userAuth.POST("/resetPassword/:user_id", user.ResetPassword)
+		userAuth.POST("/uploadAvatar/:user_id", user.UploadAvatar)
+		userAuth.DELETE("/delete/:user_id", user.Delete)
 	}
 }

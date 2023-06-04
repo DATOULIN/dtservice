@@ -2,6 +2,7 @@ package setting
 
 import (
 	"github.com/DATOULIN/dtservice/pkg/db"
+	"github.com/DATOULIN/dtservice/pkg/id"
 	"github.com/DATOULIN/dtservice/pkg/vp"
 	"github.com/jinzhu/gorm"
 	"github.com/redis/go-redis/v9"
@@ -75,5 +76,12 @@ func SetUpRedis() {
 	Redis = ins
 	if err != nil {
 		log.Fatalf("init.SetUpRedis err:%v", err)
+	}
+}
+
+// SetupUUID 初始化雪花算法生成分布式ID
+func SetupUUID() {
+	if err := id.Init(time.Now().Format("2006-01-02"), 1); err != nil {
+		log.Fatalf("init.setupUUID err:%v", err)
 	}
 }

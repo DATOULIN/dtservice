@@ -26,6 +26,10 @@ type UpdateUserRequest struct {
 	State    uint8  `form:"state" binding:"oneof=0 1"`
 }
 
+type DeleteUserRequest struct {
+	UserId int64 `form:"user_id" binding:"required"`
+}
+
 type CheckUserExistRequest struct {
 	UserId int64 `form:"user_id" binding:"required"`
 }
@@ -40,4 +44,12 @@ type ResetPasswordRequest struct {
 type UploadAvatarRequest struct {
 	UserId int64                 `form:"user_id" binding:"required"`
 	File   *multipart.FileHeader `form:"avatar"`
+}
+
+type UserInfo struct {
+	UserId int64 `json:"user_id"`
+}
+type LoginResultResponse struct {
+	AccessToken string `json:"access_token"`
+	UserInfo
 }

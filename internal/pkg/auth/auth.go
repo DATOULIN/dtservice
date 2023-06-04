@@ -9,20 +9,20 @@ import (
 	"time"
 )
 
-func ParseToken(tokenStr string) (*token.Claims, int64, error) {
+func ParseToken(tokenStr string) (*token.Claims, error) {
 	opt := &token.Option{JwtSecret: setting.JwtSettings.JwtSecret}
 	clams, err := token.Parse(opt, tokenStr)
-	userid := clams.UserId
-	return clams, userid, err
+	//userid := clams.UserId
+	return clams, err
 }
 
-func GenerateToken(username string, userid int64) string {
+func GenerateToken(email string, userid int64) string {
 	opt := &token.Option{
 		JwtSecret: setting.JwtSettings.JwtSecret,
 		Expires:   setting.JwtSettings.Expires,
 		Issuer:    setting.JwtSettings.Issuer,
 	}
-	tokenStr, err := token.Sign(opt, username, userid)
+	tokenStr, err := token.Sign(opt, email, userid)
 	if err != nil {
 		return ""
 	}
@@ -32,7 +32,7 @@ func GenerateToken(username string, userid int64) string {
 // JoinBlackList token 加入黑名单
 func JoinBlackList(tokenStr string) (err error) {
 	nowUnix := time.Now().Unix()
-	clams, _, errs := ParseToken(tokenStr)
+	clams, errs := ParseToken(tokenStr)
 	//var claims token.Claims
 	//tokenClaims, errs := jwt.ParseWithClaims(tokenStr, &claims, func(tokens *jwt.Token) (interface{}, error) {
 	//	return setting.JwtSettings.JwtSecret, nil
